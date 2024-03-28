@@ -77,9 +77,7 @@ class RestauranteTest {
 
         var comarca = new ComarcaPlus();
         comarca.montoAPagar(mesa2.cobrar());
-        // Costo plato mas el costo de bebidas es 8000
-        // Le restamos el porcentaje de 2% y quedan 7840
-        // restamos los 10000 del credito de la tarjeta y debieran quedar 2160
+
         assertEquals(8148.0, comarca.montoAPagar(mesa2.cobrar()));
     }
 
@@ -98,8 +96,7 @@ class RestauranteTest {
         mesa2.agregarPedido(pedido1);
 
         var tarjetaComun = new TarjetaViedma();
-        // Costo plato mas el costo de bebidas es 8000
-        // esta tarjeta no tiene descuento asique deberia quedar 2000 de saldo
+
         assertEquals(8400, tarjetaComun.montoAPagar(mesa2.cobrar()));
     }
 }

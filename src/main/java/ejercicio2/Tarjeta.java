@@ -8,7 +8,6 @@ public abstract class Tarjeta {
 
     }
 
-    // Método abstracto para calcular el descuento
     public abstract double calcularDescuento(double costoTotal);
 
     public abstract double montoAPagar(Pedido unPedido);
