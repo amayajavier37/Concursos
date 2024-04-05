@@ -10,6 +10,7 @@ public class Participante {
     public Participante(String nombre, int dni) {
         this.puntaje = 0;
         this.dni = dni;
+        this.nombre = nombre;
     }
 
     public void SumarPuntaje(int puntos) {

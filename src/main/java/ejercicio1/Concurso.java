@@ -23,10 +23,10 @@ public class Concurso {
                 this.inscriptos.add(unParticipante);
                 ganaPuntosExtras(unParticipante, fechaInscripcion);
             } else {
-                System.out.println("El participante ya esta inscripto");
+                throw new RuntimeException("El participante ya está inscripto");
             }
         } else {
-            System.out.println("La inscripcion al concurso ha finalizado");
+            throw new RuntimeException("La inscripcion al concurso finalizo");
         }
     }
 
@@ -37,10 +37,7 @@ public class Concurso {
     }
 
     public boolean estaInscripto(Participante unParticipante) {
-        if (this.inscriptos.contains(unParticipante)) {
-            return true;
-        }
-        return false;
+        return this.inscriptos.contains(unParticipante);
     }
 
 }

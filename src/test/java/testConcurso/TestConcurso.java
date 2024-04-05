@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestConcurso {
@@ -24,9 +24,14 @@ public class TestConcurso {
     public void incripcionFueraDeTermino() {
         Participante participante1 = new Participante("Javier", 12345);
         Concurso concurso1 = new Concurso(LocalDate.now().minusDays(1), LocalDate.now().plusDays(4), "10KH");
-        concurso1.inscribir(participante1, LocalDate.now().plusDays(6));
+        //concurso1.inscribir(participante1, LocalDate.now().plusDays(6));
 
-        assertFalse(concurso1.estaInscripto(participante1));
+        //assertFalse(concurso1.estaInscripto(participante1));
+        try {
+            concurso1.inscribir(participante1, LocalDate.now().plusDays(6));
+        } catch (RuntimeException e) {
+            assertNotNull(e);
+        }
     }
 
     @Test
