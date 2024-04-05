@@ -4,36 +4,44 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Concurso {
+    ProveedorFecha proveedorFecha;
     private LocalDate fechaInicio;
     private LocalDate fechaCierre;
     private String nombre;
     private ArrayList<Participante> inscriptos;
+    private RegistroInscripcion registro;
 
-    public Concurso(LocalDate inicio, LocalDate fin, String nombre) {
+    public Concurso(LocalDate inicio, LocalDate fin, String nombre,
+                    RegistroInscripcion registro, ProveedorFecha fecha) {
         this.fechaCierre = fin;
         this.fechaInicio = inicio;
         this.nombre = nombre;
         this.inscriptos = new ArrayList<Participante>();
-
+        this.registro = registro;
+        this.proveedorFecha = fecha;
     }
 
     public void inscribir(Participante unParticipante, LocalDate fechaInscripcion) {
-        if (fechaInscripcion.isBefore(this.fechaCierre)) {
-            if (!estaInscripto(unParticipante)) {
-                this.inscriptos.add(unParticipante);
-                ganaPuntosExtras(unParticipante, fechaInscripcion);
-            } else {
-                throw new RuntimeException("El participante ya está inscripto");
-            }
-        } else {
-            throw new RuntimeException("La inscripcion al concurso finalizo");
+        if (estaInscripto(unParticipante)) {
+            throw new RuntimeException("El participante ya está inscripto");
         }
+        if (fechaInscripcion.isAfter(this.fechaCierre)) {
+            throw new RuntimeException("La inscripción al concurso ha finalizado");
+        }
+        this.inscriptos.add(unParticipante);
+        ganaPuntosExtras(unParticipante, fechaInscripcion);
+
+
+        String fecha = this.proveedorFecha.formatearFecha(this.proveedorFecha.fecha());
+        String nombreYFecha = fecha + ", " + unParticipante.getNombre() + ", " + this.nombre + "\n";
+        this.registro.registrar(nombreYFecha);
     }
 
     public void ganaPuntosExtras(Participante unParticipante, LocalDate fechaInscripcion) {
-        if (fechaInscripcion.isEqual(this.fechaInicio) || fechaInscripcion.isAfter(this.fechaInicio)) {
-            unParticipante.SumarPuntaje(10);
+        if (!fechaInscripcion.isEqual(this.fechaInicio)) {
+            return;
         }
+        unParticipante.SumarPuntaje(10);
     }
 
     public boolean estaInscripto(Participante unParticipante) {

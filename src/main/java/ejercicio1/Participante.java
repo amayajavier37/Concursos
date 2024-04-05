@@ -17,6 +17,9 @@ public class Participante {
         this.puntaje += puntos;
     }
 
+    public String getNombre() {
+        return this.nombre;
+    }
 
     @Override
     public boolean equals(Object o) {

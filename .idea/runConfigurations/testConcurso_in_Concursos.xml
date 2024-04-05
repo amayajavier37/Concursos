@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="TestConcurso" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+  <configuration default="false" name="testConcurso in Concursos" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
     <module name="Concursos" />
     <extension name="coverage">
       <pattern>
@@ -10,9 +10,9 @@
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
     <option name="PACKAGE_NAME" value="testConcurso" />
-    <option name="MAIN_CLASS_NAME" value="testConcurso.TestConcurso" />
+    <option name="MAIN_CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
-    <option name="TEST_OBJECT" value="class" />
+    <option name="TEST_OBJECT" value="package" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
