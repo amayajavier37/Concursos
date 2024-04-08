@@ -12,7 +12,4 @@ public class FakeRegistroInscripcion implements RegistroInscripcion {
         return this.contenido.startsWith(comienza);
     }
 
-    public String getContenido() {
-        return contenido;
-    }
 }
